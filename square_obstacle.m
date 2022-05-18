@@ -1,0 +1,12 @@
+h=1;
+A = [1 0 h 0;0 1 0 h;0 0 1 0;0 0 0 1];
+B = [0 0;0 0;h 0;0 h];
+n_x = 4;
+n_u = 2;
+P = eye(n_x);
+Q = eye(n_u);
+destination = [1;1];
+obstacle_center = 0.5*destination;
+obstacle_size = 0.5;
+H = [1 0 0 0;]
+h = []

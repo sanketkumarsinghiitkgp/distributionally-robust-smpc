@@ -1,0 +1,29 @@
+H = [0 1; 0 -1];
+h = [1.2; 1.2];
+G = [1; -1];
+g = [6; 6];
+A = [ 1 1; 0 1 ];
+B = [0.5;1];
+P = diag([0.1 1]);
+Q = P;
+R = 0.1;
+K = -dlqr(A,B,P,R,0);
+eps_x = 0.4;
+eps_u = 0.1;
+T = 30;
+sigma = 1;
+w_support = Polyhedron('A',[0 0],'b',[0]);
+w_hist = [];
+z0 = [6;0];
+x0 = z0;
+e0 = x0-z0;
+x = [x_cur'];
+w = [];
+u = [];
+v = [];
+z = [];
+theta = 1e-3;
+%verify if 100 samples are sufficient
+beta = 0.95;
+
+[x_list,u_list,z_list,e_list,v_list,X_2_ul_list,X_2_ll_list,U_ul_list,U_ll_list] = compare_approaches(A,B,K,G,g,H,h,x0,e0,P,Q,R,eps_x, eps_u,sigma,w_support,num_iter,M,T,method_list, beta_scenario,theta,X,W,U,S0)
